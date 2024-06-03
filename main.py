@@ -10,22 +10,15 @@ You can return the answer in any order.
 def two_sum(nums, target):
     for idx in range(len(nums)):
 
-        int_sum = nums[(idx - 1)] + nums[idx]
+        this_num = nums[idx]
+        for idx_aux in range(len(nums)):
+            if idx_aux == idx:
+                continue
+            this_sum = this_num + nums[idx_aux]
+            if this_sum == target:
+                return idx, idx_aux
 
-        if int_sum == target:
-
-            if nums[idx - 1] >= 0:
-                num_0 = nums[idx - 1]
-            else:
-                num_0 = 0
-
-            num_1 = nums[idx]
-
-            str_res = str(num_0) + ", " + str(num_1)
-            print(str_res)
-            return str_res
-
-        idx += 1
+    return "The target value is not available within the possible sums of two individual numbers contained in the integer array"
 
 
-two_sum([1, 3, 2, 5, 6, 32, 2], 5)
+print(two_sum([0, 1, -1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0))
